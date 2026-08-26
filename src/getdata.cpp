@@ -29,14 +29,14 @@ class DataObj{
         std::string buffer;
 
         curl = curl_easy_init();
-        curl_easy_setopt(curl,CURLOPT_URL, "https://keepni.love/home");
+        curl_easy_setopt(curl, CURLOPT_URL, Config::config.apiURL.c_str());
         curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl,CURLOPT_WRITEDATA, &buffer);
         
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
 
-        //std::cout << buffer <<std::endl;
+        std::cout << buffer <<std::endl;
         std::cout << Config::config.apiURL <<std::endl;
 
     }

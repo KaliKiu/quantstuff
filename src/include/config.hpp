@@ -7,12 +7,10 @@ namespace Config{
 
     struct Config {
         std::string apiURL;
-        std::string symbol;
-
     };
-    
     extern Config config;
+    
 
-    void loadconfig(char* CONFIG_FILE_DIR);
+    void loadconfig(const char* CONFIG_FILE_DIR);
 
 }

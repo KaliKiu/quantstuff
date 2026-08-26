@@ -3,7 +3,7 @@
 #include "getdata.cpp"
 #include "include/config.hpp"
 
-static constexpr char* CONFIG_FILE_DIR =  "/data/config.json";
+static constexpr const char* CONFIG_FILE_DIR =  "../data/config.json";
 
 int main(){
 
@@ -11,8 +11,6 @@ int main(){
     
     int a = 2;
     DataObj meow(2);
-    
-    std::cout<< meow.getId();
     meow.pullData();
     
 }

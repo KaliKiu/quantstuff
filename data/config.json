@@ -1,3 +1,4 @@
 {
-    
+    "apiURL": "https://keepni.love/login",
+    "activeAPI": "curl https://biquote.io/api/active"
 }
