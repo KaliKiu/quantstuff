@@ -2,7 +2,7 @@
 #include <nlohmann/json.hpp>
 #include <stdio.h>
 #include <fstream>
-#include "config/config.hpp"
+#include "Config/config.hpp"
 
 using json = nlohmann::json;
 
@@ -17,7 +17,7 @@ namespace Config{
             return;
         }
         json configjson = json::parse(config_file);
-        config.apiURL = configjson["apiURL"];
+        config.apiURL = configjson["apiXAUUSD"];
         
     }
 

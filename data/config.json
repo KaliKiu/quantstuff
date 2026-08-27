@@ -1,4 +1,5 @@
 {
     "apiURL": "https://keepni.love/login",
+    "apiXAUUSD": "https://biquote.io/api/latest?&symbols=XAUUSD",
     "activeAPI": "curl https://biquote.io/api/active"
 }
