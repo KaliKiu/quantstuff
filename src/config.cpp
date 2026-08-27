@@ -2,7 +2,7 @@
 #include <nlohmann/json.hpp>
 #include <stdio.h>
 #include <fstream>
-#include "include/config.hpp"
+#include "config/config.hpp"
 
 using json = nlohmann::json;
 

@@ -10,7 +10,6 @@ namespace Config{
     };
     extern Config config;
     
-
     void loadconfig(const char* CONFIG_FILE_DIR);
 
 }

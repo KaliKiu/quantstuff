@@ -1,19 +1,16 @@
 #include <string>
 #include <curl/curl.h>
 #include <iostream>
-#include "include/config.hpp"
+#include "Config/config.hpp"
+#include "HttpClient/httpclient.hpp"
 
-class DataObj{
 
-    int id;
-    char* data;
-    public: 
-    DataObj (){}
-    DataObj(int id_) : id(id_)
+    HttpClient::HttpClient (){}
+    HttpClient::HttpClient(int id_) : id(id_)
     {
     }
 
-    ~DataObj(){
+    HttpClient::~HttpClient(){
 
     }
 
@@ -22,7 +19,7 @@ class DataObj{
         return size * nmemb;
     }
 
-    void pullData(){
+    void HttpClient::getData(){
 
         CURL *curl;
         CURLcode res;
@@ -41,10 +38,6 @@ class DataObj{
 
     }
 
-    int getId(){
+    int HttpClient::getId(){
         return id;
     }
-
-    private:
-
-};
