@@ -1,9 +1,13 @@
 #pragma once
 
-#include "marketdata.hpp"
+
 #include "iostream"
+#include "marketdata.hpp"
+#include "../Queue/queue.hpp"
+
 
 
 class Parser{
-    static MarketData parse(const std::string& json);
+    public:
+    static MarketData parse(Queue<std::string>& queue);
 };

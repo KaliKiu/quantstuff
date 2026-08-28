@@ -1,15 +1,15 @@
 #pragma once
 
+#include "../Queue/queue.hpp"
 
 class HttpClient{
     private:
-    int id;
-    char* data;
+    std::string buffer;
 
     public:
     HttpClient();
     ~HttpClient();
 
-    std::string getData();
-    void pushData();
+    void getData();
+    void pushData(Queue<std::string>& queue);
 };

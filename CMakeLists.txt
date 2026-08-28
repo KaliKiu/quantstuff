@@ -5,6 +5,8 @@ find_package( CURL REQUIRED )
 
 add_executable(meow 
                 src/main.cpp 
-                src/httpclient.cpp 
+                src/HttpClient/httpclient.cpp
+                src/Analyze/momentumanalyzer.cpp
+                src/Data/parser.cpp 
                 src/config.cpp)
 target_link_libraries(meow curl CURL::libcurl )

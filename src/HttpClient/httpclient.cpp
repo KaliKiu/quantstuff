@@ -1,8 +1,9 @@
 #include <string>
 #include <curl/curl.h>
 #include <iostream>
-#include "Config/config.hpp"
-#include "HttpClient/httpclient.hpp"
+#include "../Config/config.hpp"
+#include "../Queue/queue.hpp"
+#include "httpclient.hpp"
 
 
     HttpClient::HttpClient (){}
@@ -16,7 +17,7 @@
         return size * nmemb;
     }
 
-    std::string HttpClient::getData(){
+    void HttpClient::getData(){
 
         CURL *curl;
         CURLcode res;
@@ -30,9 +31,16 @@
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
 
-        std::cout << buffer <<std::endl;
         std::cout << Config::config.apiURL <<std::endl;
 
-        return buffer;
-
+        HttpClient::buffer = buffer;
+    }
+    void HttpClient::pushData(Queue<std::string>& queue){
+        this->getData();
+        if(HttpClient::buffer.empty()){
+            std::cout<<"empty string";
+            return;
+        }
+        queue.push(HttpClient::buffer);
+        HttpClient::buffer = "";
     }

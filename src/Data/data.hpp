@@ -6,9 +6,11 @@
 
 
 class Data{
-    std::vector<MarketData> HistoryData;
-
-    Data();
-
+    public:
+    
+    Data() = default;
     void addLatestData(MarketData Data);
+
+    private:
+    std::vector<MarketData> HistoryData;
 };
