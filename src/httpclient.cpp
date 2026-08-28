@@ -6,9 +6,6 @@
 
 
     HttpClient::HttpClient (){}
-    HttpClient::HttpClient(int id_) : id(id_)
-    {
-    }
 
     HttpClient::~HttpClient(){
 
@@ -19,7 +16,7 @@
         return size * nmemb;
     }
 
-    void HttpClient::getData(){
+    std::string HttpClient::getData(){
 
         CURL *curl;
         CURLcode res;
@@ -36,8 +33,6 @@
         std::cout << buffer <<std::endl;
         std::cout << Config::config.apiURL <<std::endl;
 
-    }
+        return buffer;
 
-    int HttpClient::getId(){
-        return id;
     }

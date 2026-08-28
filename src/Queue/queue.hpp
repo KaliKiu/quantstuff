@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <queue>
+#include <condition_variable>
+#include <mutex>
 
 template<typename T>
 class Queue{
@@ -11,4 +13,6 @@ class Queue{
     private:
 
     std::queue<T> data;
+    std::mutex mutex;
+    std::condition_variable cv;
 };

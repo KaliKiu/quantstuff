@@ -7,11 +7,9 @@ class HttpClient{
     char* data;
 
     public:
-    HttpClient(int id);
     HttpClient();
     ~HttpClient();
 
-
-    void getData();
-    int getId();
+    std::string getData();
+    void pushData();
 };

@@ -4,7 +4,10 @@
 #include "iostream"
 
 struct MarketData{
-    int prize;
-    int timestamp;
+    double bid;
+    double ask;
+    double spread;
+    double mid;
+    std::string timestamp;
     std::string Market;
 };
