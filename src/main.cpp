@@ -22,7 +22,7 @@ int main(){
     std::thread t([&http, &queue](){
         for(int i = 0; i<10; i++){
             http.pushData(queue);
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     });
 
@@ -37,7 +37,8 @@ int main(){
     }
     std::thread p([&queue](){
         while(!queue.is_empty()){
-            Parser::parse(queue);
+            MarketData data = Parser::parse(queue, Config::config.market_name);
+            
         }
     });
 

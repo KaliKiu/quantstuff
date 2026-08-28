@@ -4,10 +4,17 @@
 #include "iostream"
 
 struct MarketData{
-    double bid;
-    double ask;
-    double spread;
-    double mid;
+    std::string market;
+    double bid{};
+    double ask{};
+    double last{};
+    double high{};
+    double low{};
+    double dayDiffPercent{};
+    double spread{};
+    double mid{};
+    int quoteAgeSeconds{};
+    std::string marketState;
+    std::string direction;
     std::string timestamp;
-    std::string Market;
 };

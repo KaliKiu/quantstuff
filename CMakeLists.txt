@@ -8,5 +8,6 @@ add_executable(meow
                 src/HttpClient/httpclient.cpp
                 src/Analyze/momentumanalyzer.cpp
                 src/Data/parser.cpp 
+                src/Data/data.cpp
                 src/config.cpp)
 target_link_libraries(meow curl CURL::libcurl )

@@ -9,5 +9,5 @@
 
 class Parser{
     public:
-    static MarketData parse(Queue<std::string>& queue);
+    static MarketData parse(Queue<std::string>& queue, std::string market);
 };

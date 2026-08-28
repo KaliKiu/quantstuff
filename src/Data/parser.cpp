@@ -1,12 +1,32 @@
+#include <nlohmann/json.hpp>
+#include "../Queue/queue.hpp"
+#include "../Config/config.hpp"
 #include "marketdata.hpp"
 #include "data.hpp"
 #include "parser.hpp"
-#include "../Queue/queue.hpp"
 
-MarketData Parser::parse(Queue<std::string>& queue){
+using json = nlohmann::json;
 
+MarketData Parser::parse(Queue<std::string>& queue, std::string market){
     std::string buffer = queue.pop();
+    
+    json rawentry_top = json::parse(buffer);
+    auto& rawentry = rawentry_top[market];
 
-    std::cout <<buffer <<"\n\n";
-    return MarketData{};
+    MarketData data{
+        .market = rawentry_top.at(market).get<std::string>(),
+        .bid = rawentry.at("bid").get<double>(),
+        .ask = rawentry.at("ask").get<double>(),
+        .last = rawentry.at("last").get<double>(),
+        .high = rawentry.at("high").get<double>(),
+        .low = rawentry.at("low").get<double>(),
+        .dayDiffPercent = rawentry.at("dayDiffPercent").get<double>(),
+        .spread = rawentry.at("spread").get<double>(),
+        .mid = rawentry.at("mid").get<double>(),
+        .quoteAgeSeconds = rawentry.at("quoteAgeSeconds").get<int>(),
+        .marketState = rawentry.at("marketState").get<std::string>(),
+        .direction = rawentry.at("direction").get<std::string>(),
+        .timestamp = rawentry.at("timestamp").get<std::string>()
+    };
+    return data;
 }
