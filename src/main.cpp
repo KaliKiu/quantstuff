@@ -22,13 +22,8 @@ int main(){
     std::thread t([&http, &queue](){
         for(int i = 0; i<100000; i++){
             http.pushData(queue);
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     });
-
-    while(queue.is_empty()){
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    }
 
     if(t.joinable()){
         std::cout<<"thread joined";
