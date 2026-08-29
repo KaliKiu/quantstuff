@@ -12,9 +12,8 @@ MarketData Parser::parse(Queue<std::string>& queue, std::string market){
     
     json rawentry_top = json::parse(buffer);
     auto& rawentry = rawentry_top[market];
-
     MarketData data{
-        .market = rawentry_top.at(market).get<std::string>(),
+        .market = rawentry_top.at(market).at("symbol").get<std::string>(),
         .bid = rawentry.at("bid").get<double>(),
         .ask = rawentry.at("ask").get<double>(),
         .last = rawentry.at("last").get<double>(),

@@ -20,26 +20,25 @@ int main(){
     Data data;
 
     std::thread t([&http, &queue](){
-        for(int i = 0; i<10; i++){
+        for(int i = 0; i<100000; i++){
             http.pushData(queue);
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     });
 
-    /*std::thread p([&data,&queue](){
-
-    });*/
-    
+    while(queue.is_empty()){
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
 
     if(t.joinable()){
         std::cout<<"thread joined";
-        t.join();
+        t.detach();
     }
-    std::thread p([&queue](){
-        while(!queue.is_empty()){
-            MarketData data = Parser::parse(queue, Config::config.market_name);
-            
+    std::thread p([&data,&queue](){
+        while(true){
+            data.addLatestData(Parser::parse(queue, Config::config.market_name));
         }
+        
     });
 
     if(p.joinable()){

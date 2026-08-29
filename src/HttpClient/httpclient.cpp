@@ -31,16 +31,16 @@
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
 
-        std::cout << Config::config.apiURL <<std::endl;
-
-        HttpClient::buffer = buffer;
+        
+        std::cout <<this->count++;
+        this->buffer = buffer;
     }
     void HttpClient::pushData(Queue<std::string>& queue){
         this->getData();
-        if(HttpClient::buffer.empty()){
+        if(this->buffer.empty()){
             std::cout<<"empty string";
             return;
         }
-        queue.push(HttpClient::buffer);
-        HttpClient::buffer = "";
+        queue.push(this->buffer);
+        this->buffer = "";
     }

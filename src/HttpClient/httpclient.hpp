@@ -5,6 +5,7 @@
 class HttpClient{
     private:
     std::string buffer;
+    std::uint32_t count;
 
     public:
     HttpClient();

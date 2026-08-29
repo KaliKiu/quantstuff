@@ -1,7 +1,10 @@
 #pragma once
 
-#include "../HttpClient/httpclient.hpp"
+
 #include "iostream"
+#include "nlohmann/json.hpp"
+#include "../HttpClient/httpclient.hpp"
+
 
 struct MarketData{
     std::string market;
@@ -17,4 +20,17 @@ struct MarketData{
     std::string marketState;
     std::string direction;
     std::string timestamp;
+
+    void dump() const {
+        nlohmann::json j = {
+            {"market", market},
+            {"bid", bid},
+            {"ask", ask},
+            {"last", last},
+            {"state", marketState},
+            {"spread", spread},
+            {"time", timestamp}
+        };
+        std::cout << j.dump(4) << "\n";
+    }
 };
