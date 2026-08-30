@@ -14,20 +14,18 @@ class Data{
     Data() = default;
 
     template <typename T>
-    void Data::addData(T&& data){
+    void addData(T&& data){
         static_assert(!std::is_lvalue_reference_v<T>, 
                   "ERROR: You must pass an rvalue! Use std::move() if passing a variable.");
 
         std::lock_guard<std::mutex> lock(mutex);
-        if constexpr (requires(T t) { t.dump(); }) {
-            data.dump();
-        }
+        
         //could use std::forward
-        std::get<std::vector<std::decay_t<T>>>(historyStorage).push_back(std::move(data));
+        std::get<std::vector<std::decay_t<T>>>(historyData).push_back(std::move(data));
     }
     template <typename T>
-    void Data::displayHistoryData(){
-        for(auto& i : HistoryData){
+    void displayHistoryData(){
+        for(auto& i : std::get<std::vector<T>>(historyData)){
             i.dump();
         }
     }
@@ -39,5 +37,5 @@ class Data{
     std::tuple<
         std::vector<MarketData::Latest>,
         std::vector<MarketData::Ohlc>
-        > historyStorage;
+        > historyData;
 };

@@ -14,11 +14,13 @@
 static constexpr const char* CONFIG_FILE_DIR =  "../data/config.json";
 
 int main(){
+    std::cout<<"mo";
     Config::loadconfig(CONFIG_FILE_DIR);
     Queue<std::string> queue;
     HttpClient http;
     Data data;
 
+    std::cout<<"mo";
     std::thread t([&http, &queue](){
         for(int i = 0; i<100000; i++){
             http.pushData(queue);

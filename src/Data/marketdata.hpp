@@ -1,13 +1,13 @@
 #pragma once
 
-
+#include <variant>
 #include "iostream"
 #include "nlohmann/json.hpp"
 #include "../HttpClient/httpclient.hpp"
 
 
 namespace MarketData{
-    
+
     struct Ohlc{
         std::string market;
         double open{};
@@ -47,4 +47,6 @@ namespace MarketData{
             std::cout << j.dump(4) << "\n";
         }
     };
+
+    using StructType = std::variant<MarketData::Ohlc, MarketData::Latest>;
 }
