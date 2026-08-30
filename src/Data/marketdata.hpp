@@ -8,21 +8,21 @@
 
 namespace MarketData{
     
-    struct MarketData{
+    struct Ohlc{
         std::string market;
-    };
-
-    struct Ohlc : public MarketData{
         double open{};
         double high{};
         double low{};
         double close{};
     };
 
-    struct Latest : public Ohlc {
+    struct Latest {
+        std::string market;
         double bid{};
         double ask{};
         double last{};
+        double high{};
+        double low{};
         double dayDiffPercent{};
         double spread{};
         double mid{};
@@ -30,6 +30,7 @@ namespace MarketData{
         std::string marketState;
         std::string direction;
         std::string timestamp;
+        
 
         void dump() const {
             nlohmann::json j = {

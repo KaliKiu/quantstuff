@@ -31,7 +31,7 @@ int main(){
     }
     std::thread p([&data,&queue](){
         while(true){
-            data.addLatestData(Parser::parse(queue, Config::config.market_name));
+            data.addData(Parser::parseLatest(queue, Config::config.market_name));
         }
         
     });

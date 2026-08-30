@@ -7,12 +7,13 @@
 
 using json = nlohmann::json;
 
-MarketData Parser::parseOhlc(Queue<std::string>& queue, std::string market){
+MarketData::Latest Parser::parseLatest(Queue<std::string>& queue, std::string market){
     std::string buffer = queue.pop();
     
     const json rawentry_top = json::parse(buffer);
     const auto& rawentry = rawentry_top[market];
-    MarketData::Latest{
+
+    MarketData::Latest data{
         .market = rawentry_top.at(market).at("symbol").get<std::string>(),
         .bid = rawentry.at("bid").get<double>(),
         .ask = rawentry.at("ask").get<double>(),
@@ -27,5 +28,6 @@ MarketData Parser::parseOhlc(Queue<std::string>& queue, std::string market){
         .direction = rawentry.at("direction").get<std::string>(),
         .timestamp = rawentry.at("timestamp").get<std::string>()
     };
+
     return data;
 }
