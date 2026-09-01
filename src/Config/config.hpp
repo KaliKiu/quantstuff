@@ -7,7 +7,8 @@ namespace Config{
 
     struct Config {
         std::string apiURL;
-        std::string market_name;
+        std::string apiXAUUSD;
+        std::string apiXAUUSD_OHLC;
     };
     extern Config config;
     

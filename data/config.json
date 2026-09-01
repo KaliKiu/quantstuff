@@ -1,6 +1,6 @@
 {
     "apiURL": "https://keepni.love/login",
     "apiXAUUSD": "https://biquote.io/api/latest?&symbols=BTCUSD",
-    "activeAPI": "curl https://biquote.io/api/active",
-    "market_name": "BTCUSD"
+    "apiXAUUSD_OHLC": "https://biquote.io/api/XAUUSD/ohlc?interval=1m&limit=300",
+    "activeAPI": "curl https://biquote.io/api/active"
 }

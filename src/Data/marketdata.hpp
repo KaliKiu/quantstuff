@@ -14,6 +14,17 @@ namespace MarketData{
         double high{};
         double low{};
         double close{};
+
+        void dump() const {
+            nlohmann::json j = {
+                {"market", market},
+                {"open", open},
+                {"high", high},
+                {"low", low},
+                {"close", close}
+            };
+            std::cout << j.dump(4) << "\n";
+        }
     };
 
     struct Latest {
@@ -35,8 +46,8 @@ namespace MarketData{
         void dump() const {
             nlohmann::json j = {
                 {"market", market},
-                {"high"}, high,
-                {"low"}, low,
+                {"high", high},
+                {"low", low},
                 {"bid", bid},
                 {"ask", ask},
                 {"last", last},

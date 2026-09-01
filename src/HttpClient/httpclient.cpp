@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../Config/config.hpp"
 #include "../Queue/queue.hpp"
+#include "../Data/marketdata.hpp"
 #include "httpclient.hpp"
 
 
@@ -17,26 +18,26 @@
         return size * nmemb;
     }
 
-    void HttpClient::getData(){
+    void HttpClient::getData(Queue<std::string>& queue){
 
         CURL *curl;
         CURLcode res;
         std::string buffer;
 
         curl = curl_easy_init();
-        curl_easy_setopt(curl, CURLOPT_URL, Config::config.apiURL.c_str());
+        curl_easy_setopt(curl, CURLOPT_URL, Config::config.apiXAUUSD.c_str());
         curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl,CURLOPT_WRITEDATA, &buffer);
         
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
 
-        
         std::cout <<this->count++;
         this->buffer = buffer;
+        std::cout<< this->buffer;
     }
     void HttpClient::pushData(Queue<std::string>& queue){
-        this->getData();
+        this->getData(queue);
         if(this->buffer.empty()){
             std::cout<<"empty string";
             return;

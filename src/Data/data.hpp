@@ -19,7 +19,7 @@ class Data{
                   "ERROR: You must pass an rvalue! Use std::move() if passing a variable.");
 
         std::lock_guard<std::mutex> lock(mutex);
-        
+        data.dump();
         //could use std::forward
         std::get<std::vector<std::decay_t<T>>>(historyData).push_back(std::move(data));
     }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Queue/queue.hpp"
+#include "../Data/marketdata.hpp"
 
 class HttpClient{
     private:
@@ -11,6 +12,6 @@ class HttpClient{
     HttpClient();
     ~HttpClient();
 
-    void getData();
+    void getData(Queue<std::string>& queue);
     void pushData(Queue<std::string>& queue);
 };

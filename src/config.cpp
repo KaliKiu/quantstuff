@@ -18,7 +18,8 @@ namespace Config{
         }
         json configjson = json::parse(config_file);
         config.apiURL = configjson["apiXAUUSD"];
-        config.market_name = configjson["market_name"];
+        config.apiXAUUSD = configjson["apiXAUUSD"];
+        config.apiXAUUSD_OHLC = configjson["apiXAUUSD_OHLC"];
     }
 
 }  

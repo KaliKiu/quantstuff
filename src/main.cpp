@@ -1,6 +1,7 @@
 #include <iostream>
 #include <curl/curl.h>
 #include <thread>
+#include <variant>
 
 #include "HttpClient/httpclient.hpp"
 #include "Config/config.hpp"
@@ -14,15 +15,16 @@
 static constexpr const char* CONFIG_FILE_DIR =  "../data/config.json";
 
 int main(){
-    std::cout<<"mo";
+    std::cout <<"meow";
     Config::loadconfig(CONFIG_FILE_DIR);
     Queue<std::string> queue;
     HttpClient http;
     Data data;
+    MarketData::StructType datatype = MarketData::Latest{};
 
     std::cout<<"mo";
     std::thread t([&http, &queue](){
-        for(int i = 0; i<100000; i++){
+        for(int i = 0; i<100; i++){
             http.pushData(queue);
         }
     });
@@ -31,9 +33,10 @@ int main(){
         std::cout<<"thread joined";
         t.detach();
     }
-    std::thread p([&data,&queue](){
+    std::thread p([&data,&queue,&datatype](){
         while(true){
-            data.addData(Parser::parseLatest(queue, Config::config.market_name));
+            
+            data.addData(Parser::parseLatest(queue));
         }
         
     });

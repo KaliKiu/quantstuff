@@ -7,10 +7,11 @@
 
 using json = nlohmann::json;
 
-MarketData::Latest Parser::parseLatest(Queue<std::string>& queue, std::string market){
+MarketData::Latest Parser::parseLatest(Queue<std::string>& queue){
     std::string buffer = queue.pop();
     
     const json rawentry_top = json::parse(buffer);
+    std::string market = "BTCUSD";
     const auto& rawentry = rawentry_top[market];
 
     MarketData::Latest data{
