@@ -25,7 +25,7 @@
         std::string buffer;
 
         curl = curl_easy_init();
-        curl_easy_setopt(curl, CURLOPT_URL, Config::config.apiXAUUSD.c_str());
+        curl_easy_setopt(curl, CURLOPT_URL, Config::config.XAUUSD.apiXAUUSD.c_str());
         curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl,CURLOPT_WRITEDATA, &buffer);
         

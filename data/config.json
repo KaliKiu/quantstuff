@@ -1,6 +1,10 @@
 {
-    "apiURL": "https://keepni.love/login",
-    "apiXAUUSD": "https://biquote.io/api/latest?&symbols=BTCUSD",
-    "apiXAUUSD_OHLC": "https://biquote.io/api/XAUUSD/ohlc?interval=1m&limit=300",
-    "activeAPI": "curl https://biquote.io/api/active"
+    "XAUUSD": {
+        "apiXAUUSD": "https://biquote.io/api/latest?&symbols=XAUUSD",
+        "apiXAUUSD_OHLC": "https://biquote.io/api/XAUUSD/ohlc?intervSal=1m&limit=300"
+    },
+    "BCTUSD": {
+        "apiBTCUSD": "https://biquote.io/api/latest?&symbols=BTCUSD",
+        "apiBTCUSD_OHLC": "https://biquote.io/api/BTCUSD/ohlc?intervSal=1m&limit=300"
+    }
 }

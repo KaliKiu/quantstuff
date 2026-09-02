@@ -17,9 +17,11 @@ namespace Config{
             return;
         }
         json configjson = json::parse(config_file);
-        config.apiURL = configjson["apiXAUUSD"];
-        config.apiXAUUSD = configjson["apiXAUUSD"];
-        config.apiXAUUSD_OHLC = configjson["apiXAUUSD_OHLC"];
+        
+        config.XAUUSD.apiXAUUSD = configjson["XAUUSD"]["apiXAUUSD"];
+        config.XAUUSD.apiXAUUSD_OHLC = configjson["XAUUSD"]["apiXAUUSD_OHLC"];
+        config.BTCUSD.apiBTCUSD = configjson["BTCUSD"]["apiBTCUSD"];
+        config.BTCUSD.apiBTCUSD_OHLC = configjson["BTCUSD"]["apiBTCUSD_OHLC"];
     }
 
 }  

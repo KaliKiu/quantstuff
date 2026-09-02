@@ -6,9 +6,14 @@ namespace Config{
 
 
     struct Config {
-        std::string apiURL;
-        std::string apiXAUUSD;
-        std::string apiXAUUSD_OHLC;
+        struct XAUUSD{
+            std::string apiXAUUSD;
+            std::string apiXAUUSD_OHLC;
+        } XAUUSD;
+        struct BTCUSD{
+            std::string apiBTCUSD;
+            std::string apiBTCUSD_OHLC;
+        } BTCUSD;
     };
     extern Config config;
     
